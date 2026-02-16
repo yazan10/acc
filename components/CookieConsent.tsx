@@ -26,52 +26,22 @@ export const CookieConsent: React.FC<Props> = ({ t, isRtl, onAccept }) => {
   const progress = (timeLeft / totalTime) * 100;
 
   return (
-    <div className={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-[110] max-w-[240px] w-full animate-slide-up`}>
-      <div className="glass rounded-2xl p-3 shadow-2xl border border-white/10 relative overflow-hidden group hover:border-white/20 transition-all">
-        <div className="flex items-center gap-3">
-          <div className="bg-amber-500/10 p-2 rounded-full shrink-0">
-            <i className="fas fa-cookie-bite text-amber-500 text-[10px]"></i>
-          </div>
-          <div className={`flex-grow ${isRtl ? 'text-right' : 'text-left'}`}>
-            <div className="flex justify-between items-center mb-1">
-              <h4 className="text-[10px] font-bold text-white uppercase tracking-wider">{t.cookieTitle}</h4>
-              <div className="text-[8px] text-zinc-500 font-mono">
-                {timeLeft}s
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-               <p className="text-zinc-400 text-[9px] leading-tight flex-grow">
-                 {t.cookieMsg}
-               </p>
-               <button 
-                onClick={onAccept}
-                className="px-2 py-1 bg-white/10 hover:bg-white text-white hover:text-black text-[9px] font-bold rounded-md transition-all shrink-0"
-               >
-                 OK
-               </button>
-            </div>
-          </div>
+    <div className={`fixed bottom-4 ${isRtl ? 'left-4' : 'right-4'} z-[110] max-w-[200px] w-full animate-fade-in`}>
+      <div className="neu-flat rounded-full px-3 py-1.5 flex items-center gap-2 border border-white/5 relative overflow-hidden group">
+        <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+          <i className="fas fa-cookie-bite text-amber-500 text-[10px]"></i>
         </div>
-        {/* Progress bar */}
-        <div className="absolute bottom-0 left-0 h-[1px] bg-zinc-800/30 w-full">
-          <div 
-            className="h-full bg-amber-500/40 transition-all duration-1000 ease-linear"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
+        <p className="text-zinc-500 text-[9px] leading-tight truncate flex-grow">
+          {t.cookieMsg}
+        </p>
+        <button 
+          onClick={onAccept}
+          className="text-[9px] font-black text-white hover:text-amber-500 transition-colors uppercase"
+        >
+          OK
+        </button>
+        <div className="absolute bottom-0 left-0 h-[1.5px] bg-amber-500/30 transition-all duration-1000 ease-linear" style={{ width: `${progress}%` }}></div>
       </div>
     </div>
   );
 };
-
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes slide-up {
-    0% { transform: translateY(10px) scale(0.95); opacity: 0; }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
-  }
-  .animate-slide-up {
-    animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-`;
-document.head.appendChild(style);

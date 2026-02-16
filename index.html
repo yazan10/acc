@@ -12,31 +12,63 @@
         :root {
             --font-ar: 'Tajawal', sans-serif;
             --font-en: 'Inter', sans-serif;
+            --bg-color: #0a0a0b;
+            --neu-light: #121214;
+            --neu-dark: #000000;
         }
         
         body {
-            background-color: #0a0a0b;
+            background-color: var(--bg-color);
             color: #ffffff;
             overflow-x: hidden;
-            /* Defaulting to Tajawal for better Arabic support globally */
             font-family: 'Tajawal', 'Inter', sans-serif;
         }
 
-        /* Apply fonts based on document direction */
-        [dir="rtl"] {
-            font-family: 'Tajawal', sans-serif;
-        }
-        [dir="ltr"] {
-            font-family: 'Inter', sans-serif;
-        }
+        [dir="rtl"] { font-family: 'Tajawal', sans-serif; }
+        [dir="ltr"] { font-family: 'Inter', sans-serif; }
 
         .font-arabic { font-family: var(--font-ar); }
         .font-english { font-family: var(--font-en); }
         
+        /* Neumorphic Shadow Styles */
+        .neu-flat {
+            background: var(--bg-color);
+            box-shadow: 8px 8px 16px var(--neu-dark), 
+                        -8px -8px 16px var(--neu-light);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .neu-inset {
+            background: var(--bg-color);
+            box-shadow: inset 6px 6px 12px var(--neu-dark), 
+                        inset -6px -6px 12px var(--neu-light);
+            border: none;
+        }
+
+        .neu-button {
+            background: var(--bg-color);
+            box-shadow: 5px 5px 10px var(--neu-dark), 
+                        -5px -5px 10px var(--neu-light);
+            transition: all 0.2s ease;
+        }
+
+        .neu-button:active {
+            box-shadow: inset 4px 4px 8px var(--neu-dark), 
+                        inset -4px -4px 8px var(--neu-light);
+            transform: scale(0.98);
+        }
+
+        .neu-button-active {
+            background: var(--bg-color);
+            box-shadow: inset 4px 4px 8px var(--neu-dark), 
+                        inset -4px -4px 8px var(--neu-light);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .gradient-text {
@@ -45,22 +77,14 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-
         @keyframes shimmer {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
 
-        /* Hide scrollbar but allow scrolling */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0a0a0b; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #444; }
     </style>
 <script type="importmap">
 {
